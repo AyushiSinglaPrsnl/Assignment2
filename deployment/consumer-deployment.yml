@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumerapi-deployment
+  labels:
+    app: consumerapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: consumerapi
+  template:
+    metadata:
+      labels:
+        app: consumerapi
+    spec:
+      containers:
+        - name: consumerapp
+          image: consumer-app
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5002
