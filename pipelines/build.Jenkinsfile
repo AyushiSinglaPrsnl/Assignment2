@@ -14,7 +14,7 @@ pipeline {
         steps{
           script{
                 sh """
-                sh script.sh
+                sh ../script.sh
                 """
         }  
       }                   
