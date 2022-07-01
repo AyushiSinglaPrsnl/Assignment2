@@ -15,10 +15,12 @@ def reverse(s):
 @app.route("/", methods=["GET"])
 def consumer():
      response = "OOPS ! Service not working"
-     response = requests.get(url="http://127.0.0.1:5000/")
-     print(response.content)
-     message = list(json.loads(response.content.decode('utf-8')).values())[1]
-     
+     try:
+        response = requests.get(url="http://flask-service:5000")
+        print(response.content)
+        message = list(json.loads(response.content.decode('utf-8')).values())[1]
+     except:
+         return("Cannot connect to backend. API not working")
      print(message)
      return reverse(message)
 
